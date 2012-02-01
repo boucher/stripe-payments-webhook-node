@@ -37,4 +37,4 @@ app.listen(process.env.PORT || 8080);
 
 var dnode = require('dnode');
 var server = dnode(chargeServer);
-server.listen(app);
+server.listen(app, {"io":{"transports":[], "polling duration":10}});
