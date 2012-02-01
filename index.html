@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="/dnode.js" type="text/javascript"></script>
+<script type="text/javascript">
+    window.onload = function () {
+
+    	var cashRegisterAudio = document.getElementById('cash_register');
+
+        DNode(function(){
+        	this.chargeSucceeded = function(charge) {
+        		var chargeLi = document.createElement('li');
+        		chargeLi.innerHTML = "Charge for $"+(charge.amount/100).toFixed(2) +
+        							 " with description '"+charge.description+"' succeeded!";
+
+        		document.getElementById('charges').appendChild(chargeLi);
+        		cashRegisterAudio.play();
+        	}
+        }).connect();
+
+    };
+</script>
+</head>
+<body>
+
+<ul id="charges">
+</ul>
+
+<audio id="cash_register" src="/cash_register.wav" style="display:none;" preload></audio>
+</body>
+</html>
