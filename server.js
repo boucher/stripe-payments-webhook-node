@@ -30,10 +30,11 @@ function chargeServer(client, con) {
     });
 }
 
+console.log("Starting on port: "+process.env.PORT)
 app.listen(process.env.PORT || 8080);
 
 // then just pass the server app handle to .listen()!
 
 var dnode = require('dnode');
 var server = dnode(chargeServer);
-server.listen(app);
+server.listen(app, {io:{transports:['flashsocket']}});
