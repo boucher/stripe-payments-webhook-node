@@ -15,6 +15,9 @@ node web.js
 Open in browser with:
 http://localhost:8080
 
+Add your stripe api key to your env:
+heroku config:add STRIPE_SECRET_KEY=<YOUR KEY>
+
 Configure your stripe webhooks here:
 https://manage.stripe.com/#account/webhooks
 

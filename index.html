@@ -1,29 +1,78 @@
 <html>
 <head>
+<style>
+body {
+	font-family: 'Lucida Grand', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	padding-bottom: 6px;
+	margin-right: 350px;
+	border-bottom: 1px solid #aaa;
+}
+
+#test-form {
+	font-size: 80%;
+	background-color: #e6e6e6;
+	border-radius: 8px;
+	position: absolute;
+	padding: 12px;
+	top: 10px;
+	right: 10px;
+	width: 300px;
+}
+
+label {
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+</style>
 <script src="/dnode.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     window.onload = function () {
-
-    	var cashRegisterAudio = document.getElementById('cash_register');
-
         DNode(function(){
         	this.chargeSucceeded = function(charge) {
-        		var chargeLi = document.createElement('li');
-        		chargeLi.innerHTML = "Charge for $"+(charge.amount/100).toFixed(2) +
-        							 " with description '"+charge.description+"' succeeded!";
+        		var chargeLi = $('<li></li>');
+        		$(chargeLi).text("Charge for $"+(charge.amount/100).toFixed(2) +
+        						 " with description '"+charge.description+"' succeeded!");
 
-        		document.getElementById('charges').appendChild(chargeLi);
-        		cashRegisterAudio.play();
+        		$('#charges').prepend(chargeLi);
+        		document.getElementById('cash_register').play();
         	}
         }).connect();
-
     };
 </script>
 </head>
 <body>
 
+<div>
+	<h1>Payments!</h1>
+</div>
+
 <ul id="charges">
 </ul>
+
+<div id="test-form">
+	<h2>Create a test payment</h2>
+	<p>This will make an actual test payment on the configured test account, 
+	and use our actual webhook system to send the webhook, which will then show up here.</p>
+	<form action="/test-payment" method="POST" target="hidden">
+		<label for="amount">Amount: </label>
+		<input id="amount" name="amount" type="text" />
+		<br />
+
+		<label for="amount">Description: </label>
+		<input id="description" name="description" type="text" />
+		<br />
+
+		<label for="submit">&nbsp;</label>
+		<input type="submit" value="Send" />
+	</form>
+
+	<iframe name="hidden" id="hidden" width="0" height="0" style="width:0; height:0;"></iframe>
+</div>
 
 <audio id="cash_register" src="/cash_register.wav" style="display:none;" preload></audio>
 </body>
