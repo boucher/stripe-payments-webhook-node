@@ -63,7 +63,9 @@ label {
 <div id="test-form">
     <h2>Create a test payment</h2>
     <p>This will make an actual test payment on the configured test account, 
-    and use our actual webhook system to send the webhook, which will then show up here.</p>
+    and use our actual webhook system to send the webhook, which will then show up here.
+    It may take a minute, so be patient!</p>
+    
     <form action="/test-payment" method="POST" target="hidden">
         <label for="amount">Amount: </label>
         <input id="amount" name="amount" type="text" />
