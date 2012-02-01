@@ -1,0 +1,21 @@
+A simple app written in node.js (and, marginally designed to run on Heroku).
+
+This listens for charge.succeeded webhooks from Stripe, and then prints a 
+message (and plays a sound) in any browser connected to the server.
+
+For info on setting up on heroku, see this tutorial:
+http://devcenter.heroku.com/articles/node-js
+
+Install dependencies with:
+npm install .
+
+Run with:
+node web.js
+
+Open in browser with:
+http://localhost:8080
+
+Configure your stripe webhooks here:
+https://manage.stripe.com/#account/webhooks
+
+to http://{YOUR_SERVER}/stripe-webhook

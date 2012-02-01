@@ -30,7 +30,7 @@ function chargeServer(client, con) {
     });
 }
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
 
 // then just pass the server app handle to .listen()!
 
