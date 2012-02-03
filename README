@@ -10,7 +10,7 @@ Install dependencies with:
 npm install .
 
 Run with:
-node web.js
+node server.js
 
 Open in browser with:
 http://localhost:8080
