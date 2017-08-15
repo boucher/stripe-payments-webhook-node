@@ -1,6 +1,9 @@
 {
   "name": "payments-webhook-node",
   "version": "0.0.1",
+  "engines": {
+    "node": "0.8.28"
+  },
   "dependencies": {
     "express": "2.5.6",
     "dnode": "0.9.6",
